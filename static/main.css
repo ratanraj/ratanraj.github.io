@@ -1,0 +1,20 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	font-size: 2em;
+	background-color: #2a2b27;
+	color:white;
+}
+
+.greens {
+	color: #bcd42a;
+}
+
+.blues {
+	color: #26a6a6;
+}
+
+.reds {
+	color: #ff5d38;
+}
