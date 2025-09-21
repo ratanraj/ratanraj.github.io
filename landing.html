@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Transform Your School Management | #1 School Software in AP & Telangana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a67d8;
+            --secondary: #764ba2;
+            --success: #48bb78;
+            --danger: #e53e3e;
+            --dark: #2d3748;
+            --gray: #718096;
+            --light-gray: #f7fafc;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: -150px;
+            left: -150px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .secondary-button {
+            background: white;
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-preview:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 50px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Problem Section */
+        .problems {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .problems-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--danger);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea05 0%, #764ba205 100%);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* ROI Section */
+        .roi {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .roi-calculator {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .roi-row:last-child {
+            border-bottom: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+            margin-top: 1rem;
+        }
+
+        .roi-positive {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .roi-negative {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 100px;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea05 0%, #764ba205 100%);
+        }
+
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .pricing-badge {
+            background: var(--success);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-white {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Floating elements */
+        .floating-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .dashboard-preview {
+                transform: none;
+            }
+
+            .features-grid,
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">EduConnect</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#demo" class="cta-button">Get Free Demo</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Transform Your School Management in 7 Days</h1>
+                <p>Join 500+ schools in Andhra Pradesh & Telangana who've ditched WhatsApp chaos and manual paperwork for India's most intuitive school management system.</p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="cta-button">Start Free 30-Day Trial</a>
+                    <a href="#features" class="secondary-button">See How It Works</a>
+                </div>
+                <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--gray);">
+                    ✓ No credit card required ✓ Full feature access ✓ Free training included
+                </p>
+            </div>
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <div class="dashboard-header"></div>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">2,456</div>
+                            <div>Students</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">98%</div>
+                            <div>Attendance</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">₹24.5L</div>
+                            <div>Fees Collected</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems fade-in">
+        <h2 class="section-title">Your Daily Struggles End Here</h2>
+        <p class="section-subtitle">We understand the chaos of managing a school with outdated tools</p>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">📚</div>
+                <h3>Manual Fee Tracking</h3>
+                <p>Hours wasted on Excel sheets, payment follow-ups, and receipt generation</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">💬</div>
+                <h3>WhatsApp Overflow</h3>
+                <p>Important messages lost in 250+ parent groups with zero privacy control</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">📝</div>
+                <h3>Paper Mountains</h3>
+                <p>Drowning in attendance registers, admission forms, and report cards</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">⏰</div>
+                <h3>Time Drain</h3>
+                <p>Parents waiting hours, teachers doing repetitive tasks, admin overwhelmed</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution fade-in" id="features">
+        <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+        <p class="section-subtitle">Powerful features designed specifically for Indian schools</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Smart Fee Management</h3>
+                <p>Automated fee collection with UPI/card payments. Parents pay in 30 seconds, you get instant notifications.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ Auto-generate fee receipts</li>
+                    <li>✓ Send payment reminders</li>
+                    <li>✓ Track defaulters instantly</li>
+                    <li>✓ Generate financial reports</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Professional Communication</h3>
+                <p>Replace WhatsApp chaos with secure, organized channels for announcements and messages.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ Broadcast to specific groups</li>
+                    <li>✓ Two-way parent-teacher chat</li>
+                    <li>✓ Important message pinning</li>
+                    <li>✓ Complete message history</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Instant Attendance</h3>
+                <p>Mark attendance for entire class in 30 seconds. Parents get real-time notifications.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ Mobile/biometric marking</li>
+                    <li>✓ Automatic parent alerts</li>
+                    <li>✓ Monthly reports</li>
+                    <li>✓ Leave management</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Academic Excellence</h3>
+                <p>Complete exam management from scheduling to result publication in parents' app.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ Exam scheduling</li>
+                    <li>✓ Digital mark entry</li>
+                    <li>✓ Auto-calculate grades</li>
+                    <li>✓ Progress tracking</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Smart Administration</h3>
+                <p>Digitize admissions, generate reports, manage staff - all from one dashboard.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ Online admissions</li>
+                    <li>✓ Staff management</li>
+                    <li>✓ Timetable creation</li>
+                    <li>✓ Transport tracking</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Bank-Grade Security</h3>
+                <p>Your data is protected with enterprise-level security and daily automated backups.</p>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ SSL encryption</li>
+                    <li>✓ Role-based access</li>
+                    <li>✓ Daily backups</li>
+                    <li>✓ GDPR compliant</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Section -->
+    <section class="roi fade-in">
+        <h2 class="section-title">See Your Savings Add Up</h2>
+        <p class="section-subtitle">For a typical school with 500 students</p>
+        <div class="roi-calculator">
+            <div class="roi-row">
+                <span>Annual EduConnect Investment</span>
+                <span class="roi-negative">- ₹2,50,000</span>
+            </div>
+            <div class="roi-row">
+                <span>Time Savings (40 hrs/month @ ₹500/hr)</span>
+                <span class="roi-positive">+ ₹2,40,000</span>
+            </div>
+            <div class="roi-row">
+                <span>Paper & Printing Reduction (60%)</span>
+                <span class="roi-positive">+ ₹50,000</span>
+            </div>
+            <div class="roi-row">
+                <span>Improved Fee Collection (5% increase)</span>
+                <span class="roi-positive">+ ₹1,00,000</span>
+            </div>
+            <div class="roi-row">
+                <span>Reduced Communication Costs</span>
+                <span class="roi-positive">+ ₹25,000</span>
+            </div>
+            <div class="roi-row">
+                <strong>Your Net Annual Benefit</strong>
+                <strong>₹1,65,000 Saved!</strong>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 2rem; font-size: 1.2rem;">
+            <strong>Payback Period: Just 6-8 months</strong> | Most schools see positive ROI in first academic year
+        </p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats fade-in">
+        <h2 class="section-title" style="color: white;">Numbers That Matter</h2>
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Schools Transformed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2.5L+</div>
+                <div class="stat-label">Happy Students</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Parent Satisfaction</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">75%</div>
+                <div class="stat-label">Time Saved</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">7 Days</div>
+                <div class="stat-label">Implementation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials fade-in" id="testimonials">
+        <h2 class="section-title">Schools Love EduConnect</h2>
+        <div class="testimonial-card">
+            <p class="testimonial-text">
+                "We were drowning in paperwork and WhatsApp messages. EduConnect transformed everything in just one week. Fee collection improved by 30%, parents are happier with instant updates, and our teachers save 5 hours every week. The ROI was visible within 3 months!"
+            </p>
+            <div class="testimonial-author">
+                <strong>Mrs. Lakshmi Reddy</strong><br>
+                Principal, Delhi Public School, Hyderabad
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing fade-in" id="pricing">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">No hidden fees. No setup costs. No surprises.</p>
+        <div class="pricing-card">
+            <div class="pricing-badge">MOST POPULAR</div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Complete School Solution</h3>
+            <div class="price">₹500</div>
+            <div class="price-period">per student per year</div>
+            <p style="color: var(--gray); margin: 1rem 0;">That's less than ₹42 per month!</p>
+            <ul class="pricing-features">
+                <li>All modules included</li>
+                <li>Unlimited teachers & parents</li>
+                <li>Free setup & data migration</li>
+                <li>Free training for all staff</li>
+                <li>24/7 WhatsApp support</li>
+                <li>Regular updates & new features</li>
+                <li>Daily automated backups</li>
+                <li>Telugu & English support</li>
+            </ul>
+            <a href="#demo" class="cta-button" style="width: 100%; text-align: center;">Start 30-Day Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="demo">
+        <h2>Ready to Transform Your School?</h2>
+        <p>Join 500+ schools already saving time and delighting parents</p>
+        <a href="#" class="cta-white" onclick="openDemo()">Get Your Free Demo Now</a>
+        <p style="margin-top: 2rem; font-size: 1rem;">
+            Or call us directly: <strong>+91 98765 43210</strong><br>
+            Monday to Saturday, 9 AM to 7 PM
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Support</a>
+            </div>
+            <p>© 2025 EduConnect. Proudly serving schools in Andhra Pradesh & Telangana.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                📧 schools@educonnect.in | 📱 +91 98765 43210 | 🌐 www.educonnect.in
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Badge -->
+    <div class="floating-badge">
+        🎉 Limited Offer: 50% off for first 100 schools!
+    </div>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Open demo function
+        function openDemo() {
+            alert('Demo scheduling form would open here. For now, please call +91 98765 43210 to schedule your personalized demo!');
+        }
+
+        // Animate numbers when in view
+        const animateNumbers = () => {
+            const numbers = document.querySelectorAll('.stat-value');
+            numbers.forEach(num => {
+                const updateCount = () => {
+                    const target = parseInt(num.innerText);
+                    const count = +num.innerText.replace(/\D/g, '');
+                    const increment = target / 100;
+                    
+                    if (count < target) {
+                        num.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        updateCount();
+                        observer.disconnect();
+                    }
+                });
+                
+                observer.observe(num);
+            });
+        };
+
+        // Form validation (for future use)
+        const validateEmail = (email) => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+
+        const validatePhone = (phone) => {
+            return /^[6-9]\d{9}$/.test(phone);
+        };
+    </script>
+</body>
+</html>
